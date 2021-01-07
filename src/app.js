@@ -1,9 +1,13 @@
 export default function destructuring(obj) {
   const { special } = obj;
-  for (let i = 0; i < special.length; i++) {
-    if (!special[i].description) {
-      special[i].description = 'Описание недоступно';
-    }
+  const specialArr = [];
+  for (const item of special) {
+    const {
+      id, name, icon, description = 'Описание недоступно',
+    } = item;
+    specialArr.push({
+      id, name, icon, description,
+    });
   }
-  return special;
+  return specialArr;
 }
